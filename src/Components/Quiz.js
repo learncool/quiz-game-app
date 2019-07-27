@@ -20,42 +20,20 @@ class Quiz extends Component {
 
   render(){
   	return(
-  		 <div className="row">
-  		 	<button class="ui secondary button">Start Quiz</button>	
-  		 	<div className="question" style={{margin:'10px',backgroundColor:'#cacfd2'}}>
-  		 	<a class="ui label" style={{margin:'10px'}}>
-			  <img src="/images/avatar/small/elliot.jpg" class="ui avatar right spaced image" />
-			  Question 1/2
-			</a>
-			<p>Array sorting algroithms are?</p>
-  		 	</div>
-  		 	<div class="ui divided three column grid">
-				  <div class="row">
-				    <div class="column">
-				      <div style={{backgroundColor:'#cacfd2',marginLeft:'10px'}}>
-				      A:Bubble Sort
-				      </div>
-				    </div>
-				    <div class="column">
-				      <div style={{backgroundColor:'#cacfd2',marginLeft:'10px'}}>
-				      B:Quick Sort
-				      </div>
-				    </div>
-				   </div>
-				   <div class="row">
-				    <div class="column">
-				      <div style={{backgroundColor:'#cacfd2',marginLeft:'10px'}}>
-				      C:Merge Sort
-				      </div>
-				    </div>
-				    <div class="column">
-				      <div style={{backgroundColor:'#cacfd2',marginLeft:'10px'}}>
-				      D:Heap Sort
-				      </div>
-				    </div>
-				   </div>
-				</div>
-                    
+  		<div>
+			  <button class="ui secondary button" style={{margin:'10px'}}>Start Quiz</button>
+
+  		<div className="row" style={{backgroundColor:'  #a6acaf',height:'200px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right, #a6acaf,#f2f3f4 40%,#f2f3f4 100%)',margin:'20px'}}>
+  		 	<p><strong>Q)</strong> : Question is</p>
+  		 	<div >
+			  <div  style={{height:'30px',padding:'6px',textAlign:'center',margin:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,rgb(24,243,244) 40%,rgb(100,100,179) 80%)'}}>Hello</div>
+			  <div  style={{height:'30px',padding:'6px',textAlign:'center',margin:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,rgb(24,243,244) 40%,rgb(100,100,179) 80%)'}}>Hello</div>
+			  <div  style={{height:'30px',padding:'6px',textAlign:'center',margin:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,rgb(24,243,244) 40%,rgb(100,100,179) 80%)'}}>Hello</div>
+			  <div  style={{height:'30px',padding:'6px',textAlign:'center',margin:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,rgb(24,243,244) 40%,rgb(100,100,179) 80%)'}}>Hello</div>
+			</div>
+
+         
+		</div>
 		</div>
 
   		)

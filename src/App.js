@@ -10,12 +10,14 @@ class App extends Component {
     super(props);
     this.state = {
       showComponent: false,
+      showTopic:true
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }
   _onButtonClick() {
     this.setState({
       showComponent: true,
+      showTopic:false
     });
   }
 
@@ -41,65 +43,34 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-
           <img src={quiz} className="App-logo" alt="logo" style={{float:'left'}}/>
           <h2>Lets Go</h2>
           <h4>Select Your Favourite topic and start the quiz</h4>
         </div>
+        {this.state.showTopic?
+        <div className="AppBody">
+          <button class="ui secondary button" style={{margin:'10px'}}>Select Your Topic</button>
+          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
+          <img src="https://urlzs.com/C1qS2" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
+          <h3 className="App-intro">Data-Science</h3>
+          <p>Description is description</p>
 
-
-        <div className="App-body" style={{backgroundColor:' #f2f3f4',margin:'20px'}}>
-        <p className="App-intro">
-        <button class="ui secondary button">Choose Your Topic</button>
-        </p>
-
-            
-    <Card.Group>
-    <div onClick={this._onButtonClick} style={{margin:'10px'}}>
-    
-      <Card
-        image="https://urlzs.com/yoMau"
-        header='Topic-title'
-        meta='Friend'
-        description='Topic-Description.'
-      />
-      </div>
-      <div onClick={this._onButtonClick} style={{margin:'10px'}}>
-      <Card
-        image="https://bit.ly/2Yuc1E4"
-        header='Topic-title'
-        meta='Friend'
-        description='Topic-Description.'
-      />
-      </div>
-      <div onClick={this._onButtonClick} style={{margin:'10px'}}>
-      <Card
-        image={image2}
-        header='Topic-title'
-        meta='Friend'
-        description='Topic-Description.'
-      />
-      </div>
-      <div onClick={this._onButtonClick} style={{margin:'10px'}}>
-      <Card
-        image="https://bit.ly/2K2PFjP"
-        header='Topic-title'
-        meta='Friend'
-        description='Topic-Description.'
-      />
-      </div>  
-    </Card.Group>
-    <br/><br/>  
-    <hr/>
-
-    
+          </div>
+          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
+          <img src="https://urlzs.com/o986H" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>          
+          <h3 className="App-intro">Mathematics</h3>
+          <p>Description is description</p>
+          </div>
+          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
+          <img src="https://urlzs.com/yRzSt" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>          
+          <h3 className="App-intro">Virtual Reality</h3>
+          <p>Description is description</p>
+          </div>
         </div>
-        <div className="partBody" style={{backgroundColor:' #f2f3f4',margin:'20px'}}>
-            {this.state.showComponent ?
-           <Parts /> :
-           null
-        }
-        </div>
+        :null}
+
+            {this.state.showComponent ?<Parts />:null}
+        
       </div>
     );
   }
