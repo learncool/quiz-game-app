@@ -44,8 +44,12 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={quiz} className="App-logo" alt="logo" style={{float:'left'}}/>
+
+          {this.state.showTopic?null:
+          <button onClick={()=>{this.setState({showTopic:true,showComponent:false})}} class="ui secondary button" style={{float:'right'}}>Back to Topic</button>}
           <h2>Lets Go</h2>
           <h4>Select Your Favourite topic and start the quiz</h4>
+
         </div>
         {this.state.showTopic?
         <div className="AppBody">
