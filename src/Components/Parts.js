@@ -9,7 +9,6 @@ class Parts extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      showQuiz: false,
       showPart: true
     };
     this._onButtonClick = this._onButtonClick.bind(this);
@@ -18,8 +17,8 @@ class Parts extends Component {
 
 	  _onButtonClick() {
     this.setState({
-      showQuiz: true,
-      showPart: false
+      showPart: false,
+      partValue: "Python"
     });
   }
 
@@ -30,7 +29,7 @@ class Parts extends Component {
 			{this.state.showPart?
 			<div className="AppBody">
 
-			  <button class="ui secondary button" style={{margin:'10px'}}>Select Your Part</button>
+			  <button class="ui secondary button" style={{margin:'10px'}}>{this.props.topic}</button>
 	          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
 	          <img src="https://urlzs.com/E46Sm" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
           	  <h3 className="App-intro">Python</h3>
@@ -46,8 +45,7 @@ class Parts extends Component {
           	  <h3 className="App-intro">Matplotlib</h3>
 	          <p>Description is description</p>
 	          </div>
-	        </div>:null}
-		            {this.state.showQuiz ?<Quiz /> :null}
+	        </div>:<Quiz part={this.state.partValue}/>}
 		   
 		    </div>
 

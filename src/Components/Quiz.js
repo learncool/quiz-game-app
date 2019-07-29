@@ -9,7 +9,7 @@ import '../App.css';
 
 class Quiz extends Component {
 
-  constructor(props) {
+	constructor(props) {
         super(props);
         this.state = {
             
@@ -19,26 +19,25 @@ class Quiz extends Component {
 
 
   render(){
-    return(
-      <div style={{background:'#222',color:'white',border:'1px solid grey'}}>
+  	return(
+  		<div>
 
-        <button class="ui secondary button" style={{margin:'10px'}}>Start Quiz</button>
+			<button class="ui secondary button" style={{margin:'10px'}}>{this.props.part}</button>	  		
+	      	<div style={{backgroundColor:'#aeb6bf',padding:'10px',margin:'10px'}}>
+	      	<p>What is a Data-Structure</p>
+	      		<div style={{borderRadius:'0 20px 20px 0',backgroundColor:' #fff',paddingTop:'6px',marginTop:'10px',height:'30px'}}>Hello<i style={{float:'right'}} aria-hidden="true" class="chevron circle right icon"></i></div>
+	      		<div style={{borderRadius:'0 20px 20px 0',backgroundColor:' #fff',paddingTop:'6px',marginTop:'10px',height:'30px'}}>Hello<i style={{float:'right'}} aria-hidden="true" class="chevron circle right icon"></i></div>
+	      		<div style={{borderRadius:'0 20px 20px 0',backgroundColor:' #fff',paddingTop:'6px',marginTop:'10px',height:'30px'}}>Hello<i style={{float:'right'}} aria-hidden="true" class="chevron circle right icon"></i></div>
+	      		<div style={{borderRadius:'0 20px 20px 0',backgroundColor:' #fff',paddingTop:'6px',marginTop:'10px',height:'30px'}}>Hello<i style={{float:'right'}} aria-hidden="true" class="chevron circle right icon"></i></div>
+	      	
+	      	</div>
+			  
 
-      <div className="row" style={{textAlign:'center',background:'#222'}}>
-        <p>Question 1 of 10</p>
-        <strong><h2>Which one is not a sorting algorithm?</h2></strong>
-        <div >
-        <div  style={{padding:'10px',border:'1px solid',textAlign:'center',margin:'10px',background:'#222'}}>Quick Sort</div>
-        <div  style={{padding:'10px',border:'1px solid',textAlign:'center',margin:'10px',background:'#222'}}>Merge Sort</div>
-        <div  style={{padding:'10px',border:'1px solid',textAlign:'center',margin:'10px',background:'#222'}}>Heap Sort</div>
-        <div  style={{padding:'10px',border:'1px solid',textAlign:'center',margin:'10px',background:'#222'}}>Hash Sort</div>
-      </div>
 
-         
-    </div>
-    </div>
+		
+		</div>
 
-      )
+  		)
   }
 }
 
