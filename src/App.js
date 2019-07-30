@@ -15,7 +15,8 @@ class App extends Component {
   _onButtonClick() {
     this.setState({
       showComponent: true,
-      showTopic:false
+      showTopic:false,
+      topicValue:"Data-Science"
     });
   }
 
@@ -70,7 +71,7 @@ class App extends Component {
         </div>
         :null}
 
-            {this.state.showComponent ?<Parts />:null}
+            {this.state.showComponent ?<Parts topic={this.state.topicValue}/>:null}
         
       </div>
     );

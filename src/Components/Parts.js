@@ -22,6 +22,7 @@ class Parts extends Component {
 
 
 	render(){
+			console.log("props are",this.props);
 		return(
 			<div className="part">
 			{this.state.showPart?
