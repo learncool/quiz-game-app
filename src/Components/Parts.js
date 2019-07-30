@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import quiz from '../quiz.png';
-import image2 from '../image.png';
-import { Grid, Card, Icon, Image , Button} from 'semantic-ui-react';
-import '../App.css';
 import Quiz from './Quiz'
+import '../App.css';
+
 
 class Parts extends Component {
 	constructor(props) {

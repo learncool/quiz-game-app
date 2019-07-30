@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import quiz from './quiz.png';
-import image2 from './image.png';
-import { Grid, Card, Icon, Image , Button} from 'semantic-ui-react';
-import './App.css';
+import { Card } from 'semantic-ui-react';
 import Parts from './Components/Parts'
+import './App.css';
 
 class App extends Component {
     constructor(props) {
@@ -22,12 +20,11 @@ class App extends Component {
   }
 
   renderItems(){
-  const src = 'https://placeimg.com/640/480/arch'
   var news=[0,1,2,3,4,5,6,7];
   return news.map((item) =>(
     <Card.Group>
       <Card
-        image={quiz}
+        image={"https://s3.ap-south-1.amazonaws.com/files.proconaiactr.com/quiz/quiz.png"}
         header='Topic-title'
         meta='Friend'
         description='Topic-Description.'
@@ -43,7 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={quiz} className="App-logo" alt="logo" style={{float:'left'}}/>
+          <img src={"https://s3.ap-south-1.amazonaws.com/files.proconaiactr.com/quiz/quiz.png"} className="App-logo" alt="logo" style={{float:'left'}}/>
 
           {this.state.showTopic?null:
           <button onClick={()=>{this.setState({showTopic:true,showComponent:false})}} class="ui secondary button" style={{float:'right'}}>Back to Topic</button>}

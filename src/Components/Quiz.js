@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import quiz from '../quiz.png';
-import image2 from '../image.png';
-import data from '../data/data';
-import Answers from './Answers';
-
-import { Grid, Card, Icon, Image , Button} from 'semantic-ui-react';
 import '../App.css';
 
 class Quiz extends Component {
