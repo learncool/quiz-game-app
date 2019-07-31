@@ -11,40 +11,31 @@ class Parts extends Component {
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }
-
-
-	  _onButtonClick() {
+	  _onButtonClick(sub_topic) {
+			console.log(sub_topic)
     this.setState({
       showPart: false,
-      partValue: "Python"
+			partValue: sub_topic.name,
+			questions: sub_topic.questions
     });
-  }
-
+	}
 
 	render(){
-			console.log("props are",this.props);
 		return(
 			<div className="part">
 			{this.state.showPart?
 			<div className="AppBody">
 
 			  <button class="ui secondary button" style={{margin:'10px'}}>{this.props.topic}</button>
-	          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
+
+				{this.props.sub_topics.map(sub_topic =>   <div  onClick={() => this._onButtonClick(sub_topic)} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
 	          <img src="https://urlzs.com/E46Sm" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
-          	  <h3 className="App-intro">Python</h3>
-	          <p>Description is description</p>
-	          </div>
-	          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
-	          <img src="https://urlzs.com/MV2U4" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
-          	  <h3 className="App-intro">Numpy</h3>
-	          <p>Description is description</p>
-	          </div>
-	          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
-	          <img src="https://urlzs.com/MV2U4" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
-          	  <h3 className="App-intro">Matplotlib</h3>
-	          <p>Description is description</p>
-	          </div>
-	        </div>:<Quiz part={this.state.partValue}/>}
+          	  <h3 className="App-intro text-wrap">{sub_topic.name}</h3>
+	          <p>{sub_topic.description}</p>
+	          </div>)}
+	        </div>:<Quiz part={this.state.partValue}
+					questions={this.state.questions}
+					/>}
 		   
 		    </div>
 

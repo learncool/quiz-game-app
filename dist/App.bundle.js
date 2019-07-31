@@ -2957,7 +2957,7 @@ for (var i = 0; i < DOMIterables.length; i++) {
 
 exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  animation: App-logo-spin infinite 20s linear;\n  height: 80px;\n}\n\n.App-header {\n  background-color: #222;\n  height: 150px;\n  padding: 20px;\n  color: white;\n}\n\n.App-intro {\n  font-size: large;\n}\n\n@keyframes App-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n", ""]);
+exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  animation: App-logo-spin infinite 20s linear;\n  height: 80px;\n}\n\n.App-header {\n  background-color: #222;\n  height: 150px;\n  padding: 20px;\n  color: white;\n}\n\n.App-intro {\n  font-size: large;\n}\n.greenButton{\n  background-color:  #27ae60 ;\n  color:#fff;\n}\n.whiteButton{\n  background-color: #fff;\n}\n\n.redButton {\n  background-color: red ;\n  color:#fff;\n}\n\n@keyframes App-logo-spin {\n  from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }\n}\n\n.text-wrap {\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis\n}\n", ""]);
 
 
 /***/ }),
@@ -46565,30 +46565,44 @@ function (_Component) {
 
   _createClass(App, [{
     key: "_onButtonClick",
-    value: function _onButtonClick() {
+    value: function _onButtonClick(topic) {
       this.setState({
         showComponent: true,
-        showTopic: false
+        showTopic: false,
+        topicValue: topic
       });
     }
   }, {
-    key: "renderItems",
-    value: function renderItems() {
-      var news = [0, 1, 2, 3, 4, 5, 6, 7];
-      return news.map(function (item) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"].Group, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(semantic_ui_react__WEBPACK_IMPORTED_MODULE_1__["Card"], {
-          image: "https://s3.ap-south-1.amazonaws.com/files.proconaiactr.com/quiz/quiz.png",
-          header: "Topic-title",
-          meta: "Friend",
-          description: "Topic-Description."
-        }));
-      });
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      // let resp = {
+      //   "data": {
+      //     "FetchApplicationData": {
+      //       "data": "{\"_id\":\"5d40ff3a71660f202ef9e094\",\"_appId\":\"cjyq2pqca087r01286f5e6lvi\",\"topics\":[{\"_id\":1,\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]},{\"_id\":2,\"kind\":\"topic\",\"name\":\"Stock Trades\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science Stock Trades\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]},{\"_id\":3,\"kind\":\"topic\",\"name\":\"Python\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science Python\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]}]}",
+      //       "error": false,
+      //       "message": "Success"
+      //     }
+      //   }
+      // }
+      // this.setState({app_data: JSON.parse(resp.data.FetchApplicationData.data)})
+      if (this.props.fetchAppData) {
+        this.props.fetchAppData().then(function (resp) {
+          console.log("!!!!!", resp);
+
+          _this2.setState({
+            app_data: JSON.parse(resp.data.FetchApplicationData.data)
+          });
+        });
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
+      console.log("state", this.state);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "App"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -46602,7 +46616,7 @@ function (_Component) {
         }
       }), this.state.showTopic ? null : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
-          _this2.setState({
+          _this3.setState({
             showTopic: true,
             showComponent: false
           });
@@ -46618,70 +46632,37 @@ function (_Component) {
         style: {
           margin: '10px'
         }
-      }, "Select Your Topic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/C1qS2",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Data-Science"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/o986H",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Mathematics"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/yRzSt",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Virtual Reality"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description"))) : null, this.state.showComponent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Parts__WEBPACK_IMPORTED_MODULE_2__["default"], null) : null);
+      }, "Select Your Topic"), this.state.app_data && this.state.app_data.topics.map(function (topic) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: function onClick() {
+            return _this3._onButtonClick(topic.name);
+          },
+          style: {
+            backgroundColor: ' #f2f3f4',
+            height: '100px',
+            textAlign: 'Left',
+            padding: '10px',
+            borderRadius: '20px',
+            background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
+            margin: '20px'
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "https://urlzs.com/C1qS2",
+          style: {
+            height: '80px',
+            width: '80px',
+            "float": 'right',
+            borderRadius: '20px'
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "App-intro"
+        }, topic.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, topic.description));
+      })) : null, this.state.showComponent ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_Parts__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        topic: this.state.topicValue,
+        sub_topics: this.state.app_data.topics.filter(function (topic) {
+          return topic.name === _this3.state.topicValue;
+        })[0].sub_topics
+      }) : null);
     }
   }]);
 
@@ -46748,15 +46729,19 @@ function (_Component) {
 
   _createClass(Parts, [{
     key: "_onButtonClick",
-    value: function _onButtonClick() {
+    value: function _onButtonClick(sub_topic) {
+      console.log(sub_topic);
       this.setState({
         showPart: false,
-        partValue: "Python"
+        partValue: sub_topic.name,
+        questions: sub_topic.questions
       });
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "part"
       }, this.state.showPart ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -46766,71 +46751,34 @@ function (_Component) {
         style: {
           margin: '10px'
         }
-      }, this.props.topic), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/E46Sm",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Python"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/MV2U4",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Numpy"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        onClick: this._onButtonClick,
-        style: {
-          backgroundColor: ' #f2f3f4',
-          height: '100px',
-          textAlign: 'Left',
-          padding: '10px',
-          borderRadius: '20px',
-          background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
-          margin: '20px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "https://urlzs.com/MV2U4",
-        style: {
-          height: '80px',
-          width: '80px',
-          "float": 'right',
-          borderRadius: '20px'
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-        className: "App-intro"
-      }, "Matplotlib"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Description is description"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Quiz__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        part: this.state.partValue
+      }, this.props.topic), this.props.sub_topics.map(function (sub_topic) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          onClick: function onClick() {
+            return _this2._onButtonClick(sub_topic);
+          },
+          style: {
+            backgroundColor: ' #f2f3f4',
+            height: '100px',
+            textAlign: 'Left',
+            padding: '10px',
+            borderRadius: '20px',
+            background: 'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',
+            margin: '20px'
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "https://urlzs.com/E46Sm",
+          style: {
+            height: '80px',
+            width: '80px',
+            "float": 'right',
+            borderRadius: '20px'
+          }
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "App-intro text-wrap"
+        }, sub_topic.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, sub_topic.description));
+      })) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Quiz__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        part: this.state.partValue,
+        questions: this.state.questions
       }));
     }
   }]);
@@ -46888,13 +46836,40 @@ function (_Component) {
     _classCallCheck(this, Quiz);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Quiz).call(this, props));
-    _this.state = {};
+    _this.state = {
+      green: false,
+      right: 2,
+      current_question_number: 0,
+      selected_answer_index: 0,
+      current_question: _this.props.questions[1]
+    };
     return _this;
   }
 
   _createClass(Quiz, [{
+    key: "checkCorrectAnswer",
+    value: function checkCorrectAnswer(selected_option) {
+      var current_question = this.state.current_question;
+      var el = document.getElementById(current_question.correct_answer);
+      var clickedAnswer = document.getElementById(selected_option);
+
+      if (selected_option === current_question.correct_answer) {
+        el.classList.remove("whiteButton");
+        el.classList.add("greenButton");
+      } else {
+        el.classList.remove("whiteButton");
+        clickedAnswer.classList.remove("whiteButton");
+        clickedAnswer.classList.add("redButton");
+        el.classList.add("greenButton");
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      console.log(this.props);
+      var current_question = this.state.current_question;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         "class": "ui secondary button",
         style: {
@@ -46906,63 +46881,28 @@ function (_Component) {
           padding: '10px',
           margin: '10px'
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "What is a Data-Structure"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          borderRadius: '0 20px 20px 0',
-          backgroundColor: ' #fff',
-          paddingTop: '6px',
-          marginTop: '10px',
-          height: '30px'
-        }
-      }, "Hello", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          "float": 'right'
-        },
-        "aria-hidden": "true",
-        "class": "chevron circle right icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          borderRadius: '0 20px 20px 0',
-          backgroundColor: ' #fff',
-          paddingTop: '6px',
-          marginTop: '10px',
-          height: '30px'
-        }
-      }, "Hello", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          "float": 'right'
-        },
-        "aria-hidden": "true",
-        "class": "chevron circle right icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          borderRadius: '0 20px 20px 0',
-          backgroundColor: ' #fff',
-          paddingTop: '6px',
-          marginTop: '10px',
-          height: '30px'
-        }
-      }, "Hello", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          "float": 'right'
-        },
-        "aria-hidden": "true",
-        "class": "chevron circle right icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        style: {
-          borderRadius: '0 20px 20px 0',
-          backgroundColor: ' #fff',
-          paddingTop: '6px',
-          marginTop: '10px',
-          height: '30px'
-        }
-      }, "Hello", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        style: {
-          "float": 'right'
-        },
-        "aria-hidden": "true",
-        "class": "chevron circle right icon"
-      }))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, current_question.question), current_question.mcq_options.map(function (option, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          id: i,
+          onClick: function onClick() {
+            return _this2.checkCorrectAnswer(i);
+          },
+          className: "whiteButton",
+          style: {
+            borderRadius: '0 20px 20px 0',
+            cursor: 'pointer',
+            paddingTop: '6px',
+            marginTop: '10px',
+            height: '30px'
+          }
+        }, option, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          style: {
+            "float": 'right'
+          },
+          "aria-hidden": "true",
+          "class": "chevron circle right icon"
+        }));
+      })));
     }
   }]);
 

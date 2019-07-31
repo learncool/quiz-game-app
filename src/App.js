@@ -12,32 +12,34 @@ class App extends Component {
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }
-  _onButtonClick() {
+  _onButtonClick(topic) {
     this.setState({
       showComponent: true,
       showTopic:false,
-      topicValue:"Data-Science"
+      topicValue: topic
     });
   }
 
-  renderItems(){
-  var news=[0,1,2,3,4,5,6,7];
-  return news.map((item) =>(
-    <Card.Group>
-      <Card
-        image={"https://s3.ap-south-1.amazonaws.com/files.proconaiactr.com/quiz/quiz.png"}
-        header='Topic-title'
-        meta='Friend'
-        description='Topic-Description.'
-      />
-    </Card.Group>
-
-  ));
-}
-
+  componentWillMount() {
+    // let resp = {  // uncomment this for testingo
+    //   "data": {
+    //     "FetchApplicationData": {
+    //       "data": "{\"_id\":\"5d40ff3a71660f202ef9e094\",\"_appId\":\"cjyq2pqca087r01286f5e6lvi\",\"topics\":[{\"_id\":1,\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]},{\"_id\":2,\"kind\":\"topic\",\"name\":\"Stock Trades\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science Stock Trades\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]},{\"_id\":3,\"kind\":\"topic\",\"name\":\"Python\",\"description\":\"Test Description\",\"image_url\":\"\",\"sub_topics\":[{\"kind\":\"topic\",\"name\":\"Data Science\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]},{\"kind\":\"topic\",\"name\":\"Data Science Python\",\"description\":\"Test Description\",\"image_url\":\"\",\"questions\":[{\"level\":0,\"_id\":1,\"question\":\"Which of the following is not a data-structure?\",\"mcq_options\":[\"Heap\",\"Hash\",\"BST\",\"Queue\"],\"correct_answer\":1,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":2,\"question\":\"Which of the following is also referred to as random variable?\",\"mcq_options\":[\"stochast\",\"aleatory\",\"eliette\",\"All of the Mentioned\"],\"correct_answer\":0,\"explanation\":\"Random variable is also known as stochastic variable.\"},{\"level\":0,\"_id\":3,\"question\":\"Which of the following is example use of Poisson distribution ?\",\"mcq_options\":[\"Analyzing contigency table data\",\"Modeling web traffic hits\",\"Incidence rates\",\"All of the Mentioned\"],\"correct_answer\":3,\"explanation\":\"Random variable is also known as stochastic variable.\"}]}]}]}",
+    //       "error": false,
+    //       "message": "Success"
+    //     }
+    //   }
+    // }
+    // this.setState({app_data: JSON.parse(resp.data.FetchApplicationData.data)})
+    if(this.props.fetchAppData) {
+      this.props.fetchAppData().then(resp=>{
+        this.setState({app_data: JSON.parse(resp.data.FetchApplicationData.data)})
+      })
+    }
+  }
 
   render() {
-
+    console.log("state", this.state)
     return (
       <div className="App">
         <div className="App-header">
@@ -52,26 +54,18 @@ class App extends Component {
         {this.state.showTopic?
         <div className="AppBody">
           <button class="ui secondary button" style={{margin:'10px'}}>Select Your Topic</button>
-          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
+       
+       {this.state.app_data && this.state.app_data.topics.map(topic => 
+       
+          <div  onClick={() => this._onButtonClick(topic.name)} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
           <img src="https://urlzs.com/C1qS2" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
-          <h3 className="App-intro">Data-Science</h3>
-          <p>Description is description</p>
+          <h3 className="App-intro">{topic.name}</h3>
+          <p>{topic.description}</p>
 
           </div>
-          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
-          <img src="https://urlzs.com/o986H" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>          
-          <h3 className="App-intro">Mathematics</h3>
-          <p>Description is description</p>
-          </div>
-          <div  onClick={this._onButtonClick} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
-          <img src="https://urlzs.com/yRzSt" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>          
-          <h3 className="App-intro">Virtual Reality</h3>
-          <p>Description is description</p>
-          </div>
-        </div>
-        :null}
-
-            {this.state.showComponent ?<Parts topic={this.state.topicValue}/>:null}
+        )}
+        </div> : null}
+            {this.state.showComponent ?<Parts topic={this.state.topicValue} sub_topics={this.state.app_data.topics.filter(topic=>topic.name===this.state.topicValue)[0].sub_topics}/>:null}
         
       </div>
     );
