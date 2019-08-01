@@ -13,41 +13,46 @@ class addQuestion extends Component{
 			option4:'',
 			correctOptionNo:0
 
-		}
-	}
+		};	}
 	submitQuestion(e){
 		this.setState({question:e.target.value});
-		console.log("#",this.state.question);
 	}
 	submitExplanation(e){
 		this.setState({explanation:e.target.value});
-		console.log("##",this.state.explanation);
 	}
 	submitLevel(e){
 		this.setState({level:e.target.value});
-		console.log("###",this.state.level);
 	}
 	submitOption1(e){
 		this.setState({option1:e.target.value});
-		console.log("####",this.state.option1);
 	}
 	submitOption2(e){
 		this.setState({option2:e.target.value});
-		console.log("#####",this.state.option2);
 	}
 	submitOption3(e){
 		this.setState({option3:e.target.value});
-		console.log("######",this.state.option3);
 	}submitOption4(e){
 		this.setState({option4:e.target.value});
-		console.log("#######",this.state.option3);
 	}
 	submitCorrectAnswer(e){
 		this.setState({correctOptionNo:e.target.value});
-		console.log("########",this.state.correctOptionNo)
 	}
+	
+	ComponentDidMount(){
+		console.log("final state element",this.state)
+	}
+	createResponse=()=>{
+		const findTopic=this.props.app_data.topics.find(item=>item.name==this.props.topic);
+		const findPart=findTopic.sub_topics.find(item=>item.name==this.props.part); 
+		const addQuestion=findPart.questions.push(this.state);
+		console.log(this.props.app_data);
+		const stringData=JSON.stringify(this.props.app_data);
+		//Pass this Stringdata to prop
+	}
+	
 
 	render(){
+		console.log("addquestono props are",this.props,"ldlksjl",this.state);
 		return(
 			<div>
 				<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
@@ -96,17 +101,18 @@ class addQuestion extends Component{
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Correct-Option-No
                   </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.correctOptionNo(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
-            	<button class="ui secondary button">Create Quiz</button>
+            	<button class="ui secondary button" onClick={this.createResponse}>Create Quiz</button>
 
 			</div>
 			
 
 
 			);
+		}
 
 	}
-}
+
 
 export default addQuestion;

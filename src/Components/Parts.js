@@ -9,7 +9,7 @@ class Parts extends Component {
     super(props);
     this.state = {
       showPart: true,
-      isMentor: false
+      isMentor: true
 
     };
     this._onButtonClick = this._onButtonClick.bind(this);
@@ -37,11 +37,13 @@ class Parts extends Component {
           	  <h3 className="App-intro text-wrap">{sub_topic.name}</h3>
 	          <p>{sub_topic.description}</p>
 	          </div>)}
-	        </div>: this.state.isMentor ?<AddQuestion/>:<Quiz 
-					topic={this.props.topic}
-					part={this.state.partValue}
-					questions={this.state.questions}
-					/>
+	        </div>: this.state.isMentor ?<AddQuestion app_data={this.props.app_data}
+	        											topic={this.props.topic}
+														part={this.state.partValue}/>:<Quiz 
+																							topic={this.props.topic}
+																							part={this.state.partValue}
+																							questions={this.state.questions}
+																							/>
 					}
 		   
 		    </div>

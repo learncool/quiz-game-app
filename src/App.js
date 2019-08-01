@@ -86,7 +86,9 @@ class App extends Component {
           </div>
         )}
         </div> : null}
-            {this.state.showComponent ?<Parts topic={this.state.topicValue} sub_topics={this.state.app_data.topics.filter(topic=>topic.name===this.state.topicValue)[0].sub_topics}/>:null}
+            {this.state.showComponent ?<Parts app_data={this.state.app_data} 
+            topic={this.state.topicValue} 
+            sub_topics={this.state.app_data.topics.filter(topic=>topic.name===this.state.topicValue)[0].sub_topics}/>:null}
         
       </div>
     );
