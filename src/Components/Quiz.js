@@ -35,6 +35,8 @@ checkCorrectAnswer(selected_option) {
 
   render(){
 	  var { current_question } = this.state
+	  console.log("prabhat state",this.state);
+	  console.log("props are",this.props);
   
   	return(
   		<div>

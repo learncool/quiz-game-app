@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Quiz from './Quiz'
+import Quiz from './Quiz';
+import AddQuestion from './addQuestion';
 import '../App.css';
 
 
@@ -7,7 +8,9 @@ class Parts extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      showPart: true
+      showPart: true,
+      isMentor: true
+
     };
     this._onButtonClick = this._onButtonClick.bind(this);
   }
@@ -21,6 +24,7 @@ class Parts extends Component {
 	}
 
 	render(){
+		console.log("parts props are",this.props);
 		return(
 			<div className="part">
 			{this.state.showPart?
@@ -33,9 +37,12 @@ class Parts extends Component {
           	  <h3 className="App-intro text-wrap">{sub_topic.name}</h3>
 	          <p>{sub_topic.description}</p>
 	          </div>)}
-	        </div>:<Quiz part={this.state.partValue}
+	        </div>: this.state.isMentor ?<AddQuestion/>:<Quiz 
+					topic={this.props.topic}
+					part={this.state.partValue}
 					questions={this.state.questions}
-					/>}
+					/>
+					}
 		   
 		    </div>
 
@@ -48,4 +55,3 @@ class Parts extends Component {
 export default Parts;
 
 
-<h1>helli</h1>
