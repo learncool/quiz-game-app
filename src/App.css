@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body {
+  font-family: averta !important;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -40,3 +44,57 @@
   white-space: nowrap;
   text-overflow: ellipsis
 }
+
+
+::-webkit-scrollbar {
+  display: none; }
+
+
+.bottom-navigation {
+  /* display: flex; */
+  height: 3rem;
+  border-top: 1px solid rgba(34,36,38,.15);
+  background: white;
+  font-family: averta-light;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: grey;
+  white-space: nowrap;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.questions {
+  color: black;
+  display: inline-block;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  transition: background 0.8s;
+}
+
+.questions-active {
+  background: #e9ebee;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9rem;
+}
+
+.navigation-button {
+  background: none;
+  box-shadow: 0px 4px 10px 0px #00000049;
+  transition: background 0.5s;
+  color: mediumslateblue;
+  border: 1px solid;
+  font-size: 1.3em;
+  border-radius: 3rem;
+}
+
+.navigation-button:active {
+  transition: background 0.5s;
+  transform: translateY(2px);
+}
+
+@media only screen and (max-width: 600px) {
+  ::-webkit-scrollbar {
+    display: none; }
+  }

@@ -9,7 +9,7 @@ class Parts extends Component {
     super(props);
     this.state = {
       showPart: true,
-      isMentor: true
+      isMentor: false
 
     };
     this._onButtonClick = this._onButtonClick.bind(this);
