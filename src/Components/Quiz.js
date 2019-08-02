@@ -53,9 +53,14 @@ class Quiz extends Component {
 
     return (
       <div>
-        <button class="ui secondary button" style={{ margin: "10px" }}>
-          {this.props.part}
-        </button>
+      <div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
+		  <a class="section">{this.props.topic}</a>
+		  <i aria-hidden="true" class="right chevron icon divider"></i>
+		  <a class="section">{this.props.part}</a>
+		  <i aria-hidden="true" class="right arrow icon divider"></i>
+		  <div class="active section">Add Question</div>
+		</div>
+        
         <div
           style={{
             padding: "10px",

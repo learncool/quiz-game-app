@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import AddQuestion from './addQuestion';
+import { Breadcrumb } from 'semantic-ui-react';
 import '../App.css';
 
 
@@ -29,9 +30,13 @@ class Parts extends Component {
 			<div className="part">
 			{this.state.showPart?
 			<div className="AppBody">
+			<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
+			  <a class="section">{this.props.topic}</a>
+			  <i aria-hidden="true" class="right arrow icon divider"></i>
+			  <div class="active section">Select Part</div>
+			</div>
 
-			  <button class="ui secondary button" style={{margin:'10px'}}>{this.props.topic}</button>
-
+			
 				{this.props.sub_topics.map(sub_topic =>   <div  onClick={() => this._onButtonClick(sub_topic)} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
 	          <img src="https://urlzs.com/E46Sm" style={{height:'80px',width:'80px',float:'right',borderRadius:'20px'}}/>
           	  <h3 className="App-intro text-wrap">{sub_topic.name}</h3>

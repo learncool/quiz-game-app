@@ -55,24 +55,33 @@ class addQuestion extends Component{
 		console.log("addquestono props are",this.props,"ldlksjl",this.state);
 		return(
 			<div>
+				<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
+				  <a class="section">{this.props.topic}</a>
+				  <i aria-hidden="true" class="right chevron icon divider"></i>
+				  <a class="section">{this.props.part}</a>
+				  <i aria-hidden="true" class="right arrow icon divider"></i>
+				  <div class="active section">Add Question</div>
+				</div>
 				<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Question
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitQuestion(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Explanation
-                  </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
-            	</div>
+            	
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Level
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitLevel(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            		
             	</div>
+            	{/*<div>
+            		<select id="level">
+            		<option value="0">0</option>
+            		<option value="1">1</option>
+            		</select>
+            	</div>*/}
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-1
@@ -102,6 +111,12 @@ class addQuestion extends Component{
                     Correct-Option-No
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	</div>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
+                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
+                    Explanation
+                  </div>
+                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	<button class="ui secondary button" onClick={this.createResponse}>Create Quiz</button>
 
