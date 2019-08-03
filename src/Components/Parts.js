@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
-import AddQuestion from './addQuestion';
+import MentorOption from './MentorOption';
 import { Breadcrumb } from 'semantic-ui-react';
 import '../App.css';
 
@@ -42,8 +42,9 @@ class Parts extends Component {
           	  <h3 className="App-intro text-wrap">{sub_topic.name}</h3>
 	          <p>{sub_topic.description}</p>
 	          </div>)}
-	        </div>: this.state.isMentor ?<AddQuestion app_data={this.props.app_data}
+	        </div>: this.state.isMentor ?<MentorOption app_data={this.props.app_data}
 	        											topic={this.props.topic}
+	        											questions={this.state.questions}
 														part={this.state.partValue}/>:<Quiz 
 																							topic={this.props.topic}
 																							part={this.state.partValue}

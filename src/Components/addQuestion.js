@@ -62,7 +62,7 @@ class addQuestion extends Component{
 				  <i aria-hidden="true" class="right arrow icon divider"></i>
 				  <div class="active section">Add Question</div>
 				</div>
-				<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
+				<div className="ui labeled input" style={{margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Question
                   </div>
@@ -76,12 +76,7 @@ class addQuestion extends Component{
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitLevel(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             		
             	</div>
-            	{/*<div>
-            		<select id="level">
-            		<option value="0">0</option>
-            		<option value="1">1</option>
-            		</select>
-            	</div>*/}
+
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-1
@@ -118,6 +113,7 @@ class addQuestion extends Component{
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
+            	
             	<button class="ui secondary button" onClick={this.createResponse}>Create Quiz</button>
 
 			</div>
