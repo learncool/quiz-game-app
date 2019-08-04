@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
 import { ChevronLeft, ChevronRight } from "react-feather";
-import { Modal } from "semantic-ui-react"
 
 class Quiz extends Component {
   constructor(props) {
@@ -9,30 +8,18 @@ class Quiz extends Component {
     this.state = {
       green: false,
       right: 2,
-      current_question_number: 0,
       selected_answer_index: 0,
       current_question: this.props.questions[0],
 	  active_question: 1,
-	  check_submission_modal: false
+    check_submission_modal: false,
+      selected_answers: {}
     };
   }
 
-  checkCorrectAnswer(selected_option) {
-    var { current_question } = this.state;
-    var el = document.getElementById(current_question.correct_answer);
-    var clickedAnswer = document.getElementById(selected_option);
-    if (selected_option === current_question.correct_answer) {
-      el.classList.remove("whiteButton");
-      el.classList.add("greenButton");
-    } else {
-      el.classList.remove("whiteButton");
-      clickedAnswer.classList.remove("whiteButton");
-      clickedAnswer.classList.add("redButton");
-      el.classList.add("greenButton");
-    }
-  }
 
   componentDidMount() {
+    console.log(this.props)
+    this.props.toggleHeader(false)
     var el = document.getElementById("question-1");
     if (el) el.classList.add("questions-active");
   }
@@ -44,22 +31,43 @@ class Quiz extends Component {
     );
   }
 
+  checkCorrectAnswer(selected_option) {
+    var lastSelected = document.getElementById(`option-${this.state.selected_answer_index}`)
+    if(lastSelected) {lastSelected.classList.remove("selected-option")}
+    var el = document.getElementById(`option-${selected_option}`)
+    if(el) {
+      el.classList.add("selected-option")
+      this.state.selected_answers[this.state.active_question] = selected_option
+      setTimeout(() =>this.setState({selected_answer_index: selected_option}), 10)
+    } 
+  }
 
   render(){
 	  var { current_question } = this.state
 	  console.log("prabhat state",this.state);
-	  console.log("props are",this.props);
   
 
     return (
       <div>
       <div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
-		  <a class="section">{this.props.topic}</a>
+		  <a class="section" onClick={()=> this.props.showTopic()}>{this.props.topic}</a>
 		  <i aria-hidden="true" class="right chevron icon divider"></i>
-		  <a class="section">{this.props.part}</a>
+		  <a class="section"  onClick={()=> this.props.showPart()}>{this.props.part}</a>
 		  <i aria-hidden="true" class="right arrow icon divider"></i>
 		  <div class="active section">Add Question</div>
 		</div>
+    <div
+    style={{
+      margin: "1.5rem 3rem 1.5rem 3rem",
+      textAlign: "left"
+    }}
+    >
+      <h1>Q. {this.state.active_question}</h1>
+      </div>
+
+      <div style={{
+        margin: "1rem 2rem 1rem 2rem"
+      }} className="ui divider"></div>
         
         <div
           style={{
@@ -67,34 +75,26 @@ class Quiz extends Component {
             margin: "10px"
           }}
         >
-          <p>{current_question.question}</p>
+          <h3>{current_question.question}</h3>
           {current_question.mcq_options.map((option, i) => (
-            <div
-              id={i}
-              onClick={() => this.checkCorrectAnswer(i)}
-              className="whiteButton"
-              style={{
-                borderRadius: "0 20px 20px 0",
-                cursor: "pointer",
-                paddingTop: "6px",
-                marginTop: "10px",
-                height: "30px"
-              }}
-            >
-              {option}
-            </div>
+            <label className="container"
+            onClick={() => this.checkCorrectAnswer(i+1)}
+            >{option}
+            <input type="radio" name="radio"/>
+            <span className={ this.state.selected_answers[this.state.active_question] !== i+1? "checkmark" : "checkmark selected-option"} id={`option-${i+1}`}></span>
+            </label>
           ))}
         </div>
 
         <div>
           <button
-            style={{ float: "left", marginLeft: "3.5rem" }}
+            style={{ float: "left", marginLeft: "1.5rem" }}
             className="navigation-button"
           >
-            Mark for review
+            <div  style={{padding: "0.2rem"}}>Mark for review</div>
           </button>
           <button
-            style={{ float: "right", marginRight: "3.5rem" }}
+            style={{ float: "right", marginRight: "1.5rem" }}
 			className="navigation-button"
 			onClick={() => {
 				this.state.active_question === this.props.questions.length  ? 
@@ -116,7 +116,7 @@ class Quiz extends Component {
 				})
 			}}
           >
-            {this.state.active_question === this.props.questions.length ? "Submit" : "Next"}
+          <div style={{padding: "0.2rem"}}>  {this.state.active_question === this.props.questions.length ? "Submit" : "Next"}</div>
           </button>
         </div>
 
@@ -160,11 +160,6 @@ class Quiz extends Component {
             </div>
           </div>
         </div>
-		<Modal
-		size="small"
-		open={this.state.check_submission_modal}
-		><Modal.Content><div>Note</div>
-			</Modal.Content></Modal>
       </div>
     );
   }
