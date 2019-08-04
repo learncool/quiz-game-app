@@ -19,6 +19,18 @@ class App extends Component {
     });
   }
 
+  backButtonHandler() {
+    console.log(this.state.history.slice(-1)[0])
+    setTimeout(() => this.setState({}), 500) 
+  }
+
+
+  shouldComponentUpdate() {return true}
+
+  componentWillUpdate() {
+    console.log("!!!!!!!!!", this.state)
+  }
+
   componentWillMount() {
 
     let resp = {
@@ -75,7 +87,7 @@ class App extends Component {
         {this.state.showTopic?
         <div className="AppBody">
           <button class="ui secondary button" style={{margin:'10px'}}>Select Your Topic</button>
-       
+       <div className="topics-list">
        {this.state.app_data && this.state.app_data.topics.map(topic => 
        
           <div  onClick={() => this._onButtonClick(topic.name)} style={{backgroundColor:' #f2f3f4',height:'100px',textAlign:'Left',padding:'10px',borderRadius:'20px',background:'linear-gradient(to right,  #cacfd2 ,#f2f3f4 50%,#f2f3f4 100%)',margin:'20px'}}>
@@ -85,9 +97,16 @@ class App extends Component {
 
           </div>
         )}
+        </div>
         </div> : null}
             {this.state.showComponent ?<Parts app_data={this.state.app_data} 
             topic={this.state.topicValue} 
+            updateAppData={(data) => this.props.updateAppData(data)}
+            showTopic={()=>this.setState({showComponent: false, showTopic: true})}
+            showPart={() => 
+              
+              {console.log("!!")
+              this.setState({showComponent: true, showTopic: false})}}
             sub_topics={this.state.app_data.topics.filter(topic=>topic.name===this.state.topicValue)[0].sub_topics}/>:null}
         
       </div>

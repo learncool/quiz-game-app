@@ -7,7 +7,7 @@ body {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  /* animation: App-logo-spin infinite 20s linear; */
   height: 80px;
 }
 
@@ -98,3 +98,9 @@ body {
   ::-webkit-scrollbar {
     display: none; }
   }
+
+
+  .topics-container {
+    transition: all 0.35s ease-in-out 0.2s; }
+  .topics-container-hide {
+    transform: translate(-150%, 0); }

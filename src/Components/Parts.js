@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
 import MentorOption from './MentorOption';
-import { Breadcrumb } from 'semantic-ui-react';
 import '../App.css';
 
 
@@ -30,7 +29,7 @@ class Parts extends Component {
 			<div className="part">
 			{this.state.showPart?
 			<div className="AppBody">
-			<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
+			<div class="ui breadcrumb cursor" style={{textAlign:'left',fontSize:'0.8em'}} onClick={()=>this.props.showTopic()}>
 			  <a class="section">{this.props.topic}</a>
 			  <i aria-hidden="true" class="right arrow icon divider"></i>
 			  <div class="active section">Select Part</div>
@@ -44,7 +43,10 @@ class Parts extends Component {
 	          </div>)}
 	        </div>: this.state.isMentor ?<MentorOption app_data={this.props.app_data}
 	        											topic={this.props.topic}
-	        											questions={this.state.questions}
+																questions={this.state.questions}
+																updateAppData={this.props.updateAppData}
+																showPart={this.props.showPart}
+																showTopic={this.props.showTopic}
 														part={this.state.partValue}/>:<Quiz 
 																							topic={this.props.topic}
 																							part={this.state.partValue}

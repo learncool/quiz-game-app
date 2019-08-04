@@ -21,7 +21,7 @@ class addQuestion extends Component{
 		this.setState({explanation:e.target.value});
 	}
 	submitLevel(e){
-		this.setState({level:e.target.value});
+		this.setState({level:parseInt(e.target.value)});
 	}
 	submitOption1(e){
 		this.setState({option1:e.target.value});
@@ -35,53 +35,80 @@ class addQuestion extends Component{
 		this.setState({option4:e.target.value});
 	}
 	submitCorrectAnswer(e){
-		this.setState({correctOptionNo:e.target.value});
+		this.setState({correctOptionNo:parseInt(e.target.value)});
+	}
+	
+
+	setTaxonomy(e){
+    if(e.target.value === 'none'){
+    this.setState({taxonomy:''})
+    } else{
+    this.setState({taxonomy:e.target.value})      
+		}
+		console.log("!!!", this.state)
 	}
 	
 	ComponentDidMount(){
 		console.log("final state element",this.state)
 	}
-	createResponse=()=>{
-		const findTopic=this.props.app_data.topics.find(item=>item.name==this.props.topic);
-		const findPart=findTopic.sub_topics.find(item=>item.name==this.props.part); 
-		const addQuestion=findPart.questions.push(this.state);
-		console.log(this.props.app_data);
-		const stringData=JSON.stringify(this.props.app_data);
-		//Pass this Stringdata to prop
+	createResponse() {
+		let app_data = this.props.app_data;
+		app_data.topics.find(item=>item.name==this.props.topic)
+		.sub_topics.find(item=>item.name==this.props.part).questions.push({
+			correct_answer: this.state.correctOptionNo,
+			explanation: this.state.explanation,
+			level: this.state.level,
+			mcq_options: [this.state.option1, this.state.option2, this.state.option3, this.state.option4],
+			question: this.state.question,
+			_id: 1
+		});
+		this.props.updateAppData(JSON.stringify(app_data))
 	}
 	
 
 	render(){
-		console.log("addquestono props are",this.props,"ldlksjl",this.state);
 		return(
 			<div>
 				<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
-				  <a class="section">{this.props.topic}</a>
+				  <a class="section" onClick={()=> this.props.showTopic()}>{this.props.topic}</a>
 				  <i aria-hidden="true" class="right chevron icon divider"></i>
-				  <a class="section">{this.props.part}</a>
+				  <a class="section" onClick={()=> this.props.showPart()}>{this.props.part}</a>
 				  <i aria-hidden="true" class="right arrow icon divider"></i>
 				  <div class="active section">Add Question</div>
 				</div>
-				<div className="ui labeled input" style={{margin:'10px'}}>
+				<div id="quesiton-form" >
+				<div className="ui labeled input" style={{margin:'10px', width: "90%"}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Question
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitQuestion(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
+            	<div className="ui action input" style={{width:'90%',margin:'10px'}}
+							onChange={(e)=>e.target.value!==''?this.submitLevel(e):' '}
+							>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Level
                   </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitLevel(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
-            		
+									<select
+									style={{width: "80%"}}
+                      className="ui compact selection dropdown write-post-topics"
+                      value={this.state.taxonomy}
+                    >
+                      <option value="none" selected="none">
+                        Select a taxonomy
+                      </option>
+										<option value={0}>Beginner</option>
+										<option value={1}>Intermdediate</option>
+										<option value={2}>Advanced</option>
+                    </select>            		
             	</div>
 
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-1
                   </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+                  <input type="text"  className="write-post-title" style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
@@ -113,8 +140,10 @@ class addQuestion extends Component{
                   </div>
                   <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
+
+							</div>
             	
-            	<button class="ui secondary button" onClick={this.createResponse}>Create Quiz</button>
+            	<button class="ui secondary button" onClick={() => this.createResponse()}>Create Quiz</button>
 
 			</div>
 			
