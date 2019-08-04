@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {breadcrumb} from 'semantic-ui-react';
 
 class addQuestion extends Component{
 	constructor(props){
@@ -13,7 +14,9 @@ class addQuestion extends Component{
 			option4:'',
 			correctOptionNo:0
 
-		};	}
+		};
+
+	}
 	submitQuestion(e){
 		this.setState({question:e.target.value});
 	}
@@ -67,14 +70,20 @@ class addQuestion extends Component{
 	
 
 	render(){
+		let partName=this.props.part;
+		if(this.props.part.length>8){
+			partName=partName.slice(0,8)+'....';
+		}
 		return(
 			<div>
 				<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
-				  <a class="section" onClick={()=> this.props.showTopic()}>{this.props.topic}</a>
+				<span>
+				  <strong class="section" onClick={()=> this.props.showTopic()}>{this.props.topic}</strong>
 				  <i aria-hidden="true" class="right chevron icon divider"></i>
-				  <a class="section" onClick={()=> this.props.showPart()}>{this.props.part}</a>
+				  <strong class="section" onClick={()=> this.props.showPart()}>{partName}</strong>
 				  <i aria-hidden="true" class="right arrow icon divider"></i>
-				  <div class="active section">Add Question</div>
+				  <span style={{display:'inline'}} class="active section">Add Question</span>
+				  </span>
 				</div>
 				<div id="quesiton-form" >
 				<div className="ui labeled input" style={{margin:'10px', width: "90%"}}>
