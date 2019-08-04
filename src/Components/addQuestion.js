@@ -55,6 +55,12 @@ class addQuestion extends Component{
 		console.log("final state element",this.state)
 	}
 	createResponse() {
+		for(var key in this.state){
+			console.log("value pikachu",key,this.state[key]);
+			if(this.state[key]==''|| this.state[key]==null){
+				document.getElementById('errorMessage').innerHTML='<div class="ui warning message"><div class="header">There is an Error!</div><p>Please Check , all the fields are properly filled.</p></div>';
+			}
+		}
 		let app_data = this.props.app_data;
 		app_data.topics.find(item=>item.name==this.props.topic)
 		.sub_topics.find(item=>item.name==this.props.part).questions.push({
@@ -71,7 +77,7 @@ class addQuestion extends Component{
 
 	render(){
 		let partName=this.props.part;
-		if(this.props.part.length>8){
+		if(this.props.part.length>8 && window.innerWidth<=350){
 			partName=partName.slice(0,8)+'....';
 		}
 		return(
@@ -85,6 +91,7 @@ class addQuestion extends Component{
 				  <span style={{display:'inline'}} class="active section">Add Question</span>
 				  </span>
 				</div>
+				<div id="errorMessage" style={{margin:'20px',background:'red'}}></div>
 				<div id="quesiton-form" >
 				<div className="ui labeled input" style={{margin:'10px', width: "90%"}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
@@ -100,7 +107,7 @@ class addQuestion extends Component{
                     Level
                   </div>
 									<select
-									style={{width: "80%"}}
+									style={{width: "90%"}}
                       className="ui compact selection dropdown write-post-topics"
                       value={this.state.taxonomy}
                     >
@@ -117,13 +124,13 @@ class addQuestion extends Component{
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-1
                   </div>
-                  <input type="text"  className="write-post-title" style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+                  <input type="text"  required className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-2
                   </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption2(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+                  <input type="text"  required className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption2(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
@@ -141,7 +148,7 @@ class addQuestion extends Component{
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Correct-Option-No
                   </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+                  <input type="number"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
             	</div>
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
