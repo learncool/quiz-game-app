@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {breadcrumb} from 'semantic-ui-react';
+import MentorOption from './MentorOption';
 
 class addQuestion extends Component{
 	constructor(props){
@@ -70,7 +71,11 @@ class addQuestion extends Component{
 			mcq_options: [this.state.option1, this.state.option2, this.state.option3, this.state.option4],
 			question: this.state.question		});
 			delete app_data._id
-		this.props.updateAppData(JSON.stringify(app_data))
+		this.props.updateAppData(JSON.stringify(app_data)).then((res)=>{
+		if(res.data.UpdateApplicationData.error==null){
+				this.setState({backToMentor:true})
+			}
+		})	
 	}
 	
 
@@ -79,7 +84,16 @@ class addQuestion extends Component{
 		if(this.props.part.length>8 && window.innerWidth<=350){
 			partName=partName.slice(0,8)+'....';
 		}
-		return(
+		return(<div>
+			{this.state.backToMentor?
+				<div>
+				<div class="ui success message" style={{margin:'10px'}}>
+				  <div class="content">
+				    <div class="header">Question Added Successfully.</div>
+				    <p>Select 'Back to Topic'.</p>
+				  </div>
+				</div>
+				</div>:
 			<div>
 				<div class="ui breadcrumb" style={{textAlign:'left',fontSize:'0.8em'}}>
 				<span>
@@ -162,6 +176,7 @@ class addQuestion extends Component{
             	
             	<button class="ui secondary button" onClick={() => this.createResponse()}>Create Quiz</button>
 
+			</div>}
 			</div>
 			
 
