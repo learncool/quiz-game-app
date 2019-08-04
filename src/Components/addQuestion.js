@@ -68,9 +68,8 @@ class addQuestion extends Component{
 			explanation: this.state.explanation,
 			level: this.state.level,
 			mcq_options: [this.state.option1, this.state.option2, this.state.option3, this.state.option4],
-			question: this.state.question,
-			_id: 1
-		});
+			question: this.state.question		});
+			delete app_data._id
 		this.props.updateAppData(JSON.stringify(app_data))
 	}
 	
@@ -124,10 +123,12 @@ class addQuestion extends Component{
                   <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-1
                   </div>
-                  <input type="text"  required className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+
+                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+
             	</div>
             	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
+                  <div className='ui label write-post-title-label'  style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
                     Option-2
                   </div>
                   <input type="text"  required className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption2(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>

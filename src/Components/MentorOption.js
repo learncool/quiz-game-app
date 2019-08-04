@@ -18,7 +18,7 @@ class MentorOption extends Component {
 		console.log("final state element",this.state)
 	}
 	render(){
-		console.log("props are ",this.props);
+		console.log("m props are ",this.props);
 		
 		return(
 
@@ -41,8 +41,11 @@ class MentorOption extends Component {
 			{this.state.showPlayQuiz?
 				<Quiz
 				topic={this.props.topic}
+				showTopic={this.props.showTopic}
+
 				part={this.props.part}
-				questions={this.props.questions}/>:null}
+				questions={this.props.questions}
+				toggleHeader={this.props.toggleHeader}/>:null}
 			</div>
 			);
 	}

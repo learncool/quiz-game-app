@@ -45,9 +45,10 @@ class Parts extends Component {
 	        											topic={this.props.topic}
 																questions={this.state.questions}
 																updateAppData={this.props.updateAppData}
+
 																showPart={this.props.showPart}
 																showTopic={this.props.showTopic}
-														part={this.state.partValue}/>:<Quiz 
+														part={this.state.partValue} {...this.props}/>:<Quiz 
 																							topic={this.props.topic}
 																							part={this.state.partValue}
 																							questions={this.state.questions}
