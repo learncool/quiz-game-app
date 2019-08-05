@@ -53,11 +53,9 @@ class addQuestion extends Component{
 	}
 	
 	ComponentDidMount(){
-		console.log("final state element",this.state)
 	}
 	createResponse() {
 		for(var key in this.state){
-			console.log("value pikachu",key,this.state[key]);
 			if(this.state[key]==''|| this.state[key]==null){
 				document.getElementById('errorMessage').innerHTML='<div class="ui warning message"><div class="header">There is an Error!</div><p>Please Check , all the fields are properly filled.</p></div>';
 			}
@@ -80,10 +78,8 @@ class addQuestion extends Component{
 	
 
 	render(){
-		let partName=this.props.part;
-		if(this.props.part.length>8 && window.innerWidth<=350){
-			partName=partName.slice(0,8)+'....';
-		}
+
+		
 		return(<div>
 			{this.state.backToMentor?
 				<div>
@@ -99,83 +95,61 @@ class addQuestion extends Component{
 				<span>
 				  <strong class="section" onClick={()=> this.props.showTopic()}>{this.props.topic}</strong>
 				  <i aria-hidden="true" class="right chevron icon divider"></i>
-				  <strong class="section" onClick={()=> this.props.showPart()}>{partName}</strong>
+				  <strong style={{overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',width:'100px'}} class="section" onClick={()=> this.props.showPart()}>{this.props.part}</strong>
 				  <i aria-hidden="true" class="right arrow icon divider"></i>
 				  <span style={{display:'inline'}} class="active section">Add Question</span>
-				  </span>
+				</span>
 				</div>
 				<div id="errorMessage" style={{margin:'20px',background:'red'}}></div>
-				<div id="quesiton-form" >
-				<div className="ui labeled input" style={{margin:'10px', width: "90%"}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Question
-                  </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitQuestion(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+				<div id="quesiton-form" style={{margin:'20px',boxShadow:'5px 5px 5px gray',background:'#eaeded'}}>
+				<div className="ui labeled input" style={{margin:'10px', width:'90%',borderBottom:'1px solid #ebe8e4'}}>
+                  <input type="text"  placeholder="Question" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitQuestion(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
             	
-            	<div className="ui action input" style={{width:'90%',margin:'10px'}}
-							onChange={(e)=>e.target.value!==''?this.submitLevel(e):' '}
-							>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Level
-                  </div>
-									<select
-									style={{width: "90%"}}
-                      className="ui compact selection dropdown write-post-topics"
-                      value={this.state.taxonomy}
-                    >
-                      <option value="none" selected="none">
-                        Select a taxonomy
-                      </option>
-										<option value={0}>Beginner</option>
-										<option value={1}>Intermdediate</option>
-										<option value={2}>Advanced</option>
-                    </select>            		
-            	</div>
+            
 
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Option-1
-                  </div>
 
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}} >
+                  <input type="text"  placeholder="option-1" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption1(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
 
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label'  style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Option-2
-                  </div>
-                  <input type="text"  required className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption2(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}}>
+                  <input type="text"  placeholder="option-2" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption2(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Option-3
-                  </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption3(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}}>
+                  
+                  <input type="text"  placeholder="Option-3" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption3(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Option-4
-                  </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption4(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}}>
+                  
+                  <input type="text"  placeholder="Option-4" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitOption4(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Correct-Option-No
-                  </div>
-                  <input type="number"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}}>
+                  <input type="number"  placeholder="Correct Option No:" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitCorrectAnswer(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
-            	<div className="ui labeled input" style={{width:'90%',margin:'10px'}}>
-                  <div className='ui label write-post-title-label' style={{padding: '1.2em 0.8em 0.75em',fontSize: '0.85em',width:'100px'}}>
-                    Explanation
-                  </div>
-                  <input type="text"  className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em'}}/>
+            	<div className="ui labeled input" style={{width:'90%',margin:'10px',borderBottom:'1px solid #ebe8e4'}}>
+                  <input type="text"  placeholder="Explanation" className="write-post-title" onChange={(e)=>e.target.value!==''?this.submitExplanation(e):' '} style={{padding:'0.8em 0.6em 0.8em 0.6em',border:'none'}}/>
             	</div>
+            	<div className="category-buttons" style={{width:'90%',margin:'10px',paddingBottom:'10px'}}>
+            	<h4>Level</h4>
+                  <div  className={this.state.level==0?'ui  button primary mini':'ui button mini'} onClick={()=>{this.setState({level:0})}} style={{borderRadius:'20px'}}>
+                    Beginner
+                  </div>
+                  <div  className={this.state.level==1?'ui  button primary mini':'ui button mini'} onClick={()=>{this.setState({level:1})}} style={{borderRadius:'20px'}}>
+                    Intermediate
+                  </div>
+                  <div  className={this.state.level==2?'ui  button primary mini':'ui button mini'} onClick={()=>{this.setState({level:2})}} style={{borderRadius:'20px'}}>
+                    Advanced
+                  </div>
+                </div>
 
-							</div>
+			</div>
+			
             	
             	<button class="ui secondary button" onClick={() => this.createResponse()}>Create Quiz</button>
 
+		
+						
 			</div>}
 			</div>
 			
